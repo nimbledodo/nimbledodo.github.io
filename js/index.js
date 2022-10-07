@@ -1,6 +1,6 @@
 const body = document.querySelector("body");
 const nBgImg = 12; // total number of background images
-const bgImgFolder = "./img/";
+const bgImgFolder = "img/";
 const bgImgPrefix = "bg";
 const bgImgExt = "jpg";
 
