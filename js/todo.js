@@ -51,3 +51,7 @@ if (savedToDos !== null) {
 }
 
 toDoForm.addEventListener("submit", onToDoSubmit);
+
+// 추가할 기능
+// 1. 체크해서 취소선
+// 2. 순서 변경

@@ -58,3 +58,10 @@ if (savedUserName === null) {
 } else {
   displayGreeting(savedUserName);
 }
+
+// 추가할 기능
+// 1. Geolocation & weather
+// 2. timerId
+// 3. 검색창
+// 4. WorldClock & weather
+// 5. CSS 꾸미기
