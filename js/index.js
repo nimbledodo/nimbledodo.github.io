@@ -7,7 +7,5 @@ const bgImgExt = "jpg";
 bgImgFileName = `${bgImgFolder}${bgImgPrefix}${Math.floor(
   Math.random() * nBgImg
 )}.${bgImgExt}`;
-console.log(bgImgFileName);
 
 body.style.backgroundImage = "url('" + bgImgFileName + "')";
-// body.style.backgroundImage = "url('./img/bg1.jpg')";
