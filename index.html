@@ -8,39 +8,52 @@
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
   </head>
   <body>
-    <div>    
+    <div>
       <form id="search">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" required placeholder="Google search">
+        <input type="text" required placeholder="Google search" />
         <button type="submit"></button>
       </form>
     </div>
     <div id="clock"><span></span></div>
-    <form class="hidden" id="login-form">
-      <input
-        required
-        maxlength="15"
-        type="text"
-        placeholder="Hey, what is your name?"
-      />
-      <input type="submit" value="Log in" />
-    </form>
-    <div class="hidden" id="greeting"></div>
-    <form id="todo-form">
+    <div id="timer">
+      <button id="add-min">+</button><button id="sub-min">-</button>
+      <button id="add-sec">+</button><button id="sub-sec">-</button>
+      <span id="time-left">00:00</span>
+      <i class="fa-solid fa-play"></i>
+    </div>
+    <div id="login/greeting">
+      <form class="hidden" id="login-form">
+        <input
+          required
+          maxlength="15"
+          type="text"
+          placeholder="Hey, what is your name?"
+        />
+        <input type="submit" value="Log in" />
+      </form>
+      <div class="hidden" id="greeting"></div>
+    </div>
+    <div id="todo">
+      <form id="todo-form">
         <input type="text" placeholder="New Todo" required />
-    </form>
-    <ul id="todo-list"></ul>
+      </form>
+      <ul id="todo-list"></ul>
     </div>
     <div id="weather">
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <script src="./js/apikey.js"></script> 
+    <script src="./js/apikey.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/clock.js"></script>
+    <script src="./js/timer.js"></script>
     <script src="./js/todo.js"></script>
     <script src="./js/weather.js"></script>
     <script src="./js/search.js"></script>
-    <script src="https://kit.fontawesome.com/3294494ea5.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3294494ea5.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
