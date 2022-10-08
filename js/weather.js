@@ -1,6 +1,6 @@
 const city = document.querySelector("#weather span:first-child");
 const weather = document.querySelector("#weather span:last-child");
-const API_KEY = "f899f6a9ec558ddfe8fad14425c8c403";
+const API_KEY = config.apikey;
 
 // get current location and weather
 navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoErr);

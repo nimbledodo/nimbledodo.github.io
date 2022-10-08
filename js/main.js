@@ -61,7 +61,7 @@ if (savedUserName === null) {
 
 // 추가할 기능
 // 1. Geolocation & weather
-// 2. timerId
+// 2. timer
 // 3. 검색창
 // 4. WorldClock & weather
 // 5. CSS 꾸미기
