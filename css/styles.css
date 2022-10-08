@@ -22,6 +22,10 @@ body {
   font-weight: 400;
 }
 
+#weather > img {
+  height: 2em;
+}
+
 .hidden {
   display: none;
 }

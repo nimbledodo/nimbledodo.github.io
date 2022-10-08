@@ -9,4 +9,17 @@ function onSearchSubmit(e) {
   searchInput.value = "";
   win.focus();
 }
+
+function onSearchMouseOver(e) {
+  e.preventDefault();
+  searchInput.classList.remove("hidden");
+}
+function onSearchMouseOut(e) {
+  e.preventDefault();
+  if (searchInput.value === "") {
+    searchInput.classList.add("hidden");
+  }
+}
 searchForm.addEventListener("submit", onSearchSubmit);
+searchForm.addEventListener("mouseover", onSearchMouseOver);
+searchForm.addEventListener("mouseout", onSearchMouseOut);
