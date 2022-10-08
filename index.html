@@ -11,29 +11,32 @@
     <div>
       <form id="search">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" required placeholder="Search" class="hidden" />
-        <i class="fa-brands fa-google"></i>
+        <input type="text" required class="hidden" />
+        <i class="fa-brands" id="icon"></i>
       </form>
     </div>
-    <div id="clock"><span></span></div>
     <div id="timer">
       <button id="add-min">+</button><button id="sub-min">-</button>
       <button id="add-sec">+</button><button id="sub-sec">-</button>
       <span id="time-left">00:00</span>
       <i class="fa-solid fa-play"></i>
     </div>
-    <div id="login/greeting">
-      <form class="hidden" id="login-form">
-        <input
-          required
-          maxlength="15"
-          type="text"
-          placeholder="Hey, what is your name?"
-        />
-        <input type="submit" value="Log in" />
-      </form>
-      <div class="hidden" id="greeting"></div>
+    <div id="main">
+      <div id="clock"><span></span></div>
+      <div id="login_greeting">
+        <form class="hidden" id="login-form">
+          <input
+            required
+            maxlength="15"
+            type="text"
+            placeholder="Hey, what is your name?"
+          />
+          <input type="submit" value="Log in" />
+        </form>
+        <div class="hidden" id="greeting"></div>
+      </div>
     </div>
+
     <div id="todo">
       <form id="todo-form">
         <input type="text" placeholder="New Todo" required />
@@ -41,8 +44,8 @@
       <ul id="todo-list"></ul>
     </div>
     <div id="weather">
-      <span></span>
       <img />
+      <span></span>
       <span></span>
     </div>
     <script src="./js/apikey.js"></script>

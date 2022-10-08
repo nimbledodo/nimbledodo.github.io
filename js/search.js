@@ -1,5 +1,8 @@
 const searchForm = document.querySelector("#search");
 const searchInput = searchForm.querySelector("input");
+const searchItag = document.querySelector("#icon");
+const mouseOn = false;
+const ICON_CLASS_NAME = "fa-google";
 
 function onSearchSubmit(e) {
   e.preventDefault();
@@ -13,13 +16,22 @@ function onSearchSubmit(e) {
 function onSearchMouseOver(e) {
   e.preventDefault();
   searchInput.classList.remove("hidden");
+  searchItag.classList.add(ICON_CLASS_NAME);
+  mouseOn = true;
 }
 function onSearchMouseOut(e) {
   e.preventDefault();
-  if (searchInput.value === "") {
+  mouseOn = false;
+}
+
+function onBodyClick(e) {
+  e.preventDefault();
+  if (mouseOn == false && searchInput.value === "") {
     searchInput.classList.add("hidden");
+    searchItag.classList.remove(ICON_CLASS_NAME);
   }
 }
 searchForm.addEventListener("submit", onSearchSubmit);
 searchForm.addEventListener("mouseover", onSearchMouseOver);
 searchForm.addEventListener("mouseout", onSearchMouseOut);
+body.addEventListener("click", onBodyClick);
