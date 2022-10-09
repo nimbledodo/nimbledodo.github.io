@@ -41,6 +41,7 @@ button {
   background-color: rgba(0, 0, 0, 0.3);
   padding: 1em 1em 2em 1em;
   border-radius: 1em;
+  cursor: default;
 }
 
 #clock {
@@ -69,8 +70,8 @@ body > div:first-child {
 #search {
   grid-column: 1;
   grid-row: 0;
-  margin-left: 1.5vh;
-  margin-top: 1.5vh;
+  margin-left: 20px;
+  margin-top: 20px;
   height: 1.5em;
   display: flex;
   align-items: start;
@@ -106,9 +107,81 @@ body > div:first-child {
 #todo {
   grid-column: 3;
   grid-row: 2 / span 2;
+  justify-self: end;
   align-self: end;
-  padding-right: 1vh;
-  padding-bottom: 1vh;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+#todo-title {
+  order: 2;
+  align-self: end;
+  font-weight: 300;
+  font-size: 18px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+#todo-title:first-child:hover {
+  cursor: pointer;
+}
+#todo-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  color: black;
+  padding: 15px;
+  margin-bottom: 10px;
+  position: absolute;
+  right: 10px;
+  bottom: 50px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#todo-container:after {
+  border-top: 10px solid rgba(255, 255, 255, 0.9);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 0px solid transparent;
+  content: "";
+  position: absolute;
+  right: 20px;
+  bottom: -10px;
+}
+#todo-container:hover {
+  cursor: default;
+}
+#todo-container.hidden {
+  display: none;
+}
+#todo-container > div {
+  font-size: 20px;
+  font-weight: 500;
+}
+#todo-list {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  gap: 10px;
+}
+#todo-form > input {
+  color: rgba(100, 100, 100, 1);
+  font-size: 15px;
+}
+#todo-form > input::placeholder {
+  color: rgba(100, 100, 100, 1);
+}
+li {
+  display: flex;
+  gap: 5px;
+}
+.fa-trash-can {
+  margin-left: auto;
+}
+.fa-trash-can:hover {
+  cursor: pointer;
 }
 .done > span {
   text-decoration: line-through;
@@ -117,8 +190,8 @@ body > div:first-child {
   grid-column: 1;
   grid-row: 2 / span 2;
   align-self: end;
-  margin-left: 1.5vh;
-  margin-bottom: 1.5vh;
+  margin-left: 20px;
+  margin-bottom: 15px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, auto);
@@ -142,8 +215,8 @@ i {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   align-items: center;
-  padding-right: 1vh;
-  padding-top: 1vh;
+  margin-right: 20px;
+  margin-top: 15px;
 }
 #weather > span:last-child {
   grid-column: span 2;

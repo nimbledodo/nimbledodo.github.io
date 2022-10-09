@@ -1,6 +1,9 @@
 const toDoForm = document.querySelector("#todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector("#todo-list");
+const toDoTitle = document.querySelector("#todo-title");
+const toDoContainer = document.querySelector("#todo-container");
+let toDoShow = false;
 
 const STYLE = "fa-regular";
 const DONE = "fa-square-check";
@@ -83,6 +86,10 @@ function addToDo(newToDoObj) {
   toDoList.appendChild(li);
 }
 
+function onToDoTitleClick(e) {
+  toDoContainer.classList.toggle(HIDDEN_CLASSNAME);
+}
+
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if (savedToDos !== null) {
@@ -91,6 +98,7 @@ if (savedToDos !== null) {
 }
 
 toDoForm.addEventListener("submit", onToDoSubmit);
+toDoTitle.addEventListener("click", onToDoTitleClick);
 
 // 추가할 기능
 // 1. 체크해서 취소선

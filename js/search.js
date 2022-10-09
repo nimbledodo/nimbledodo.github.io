@@ -19,24 +19,30 @@ function onSearchSubmit(e) {
 
 function onSearchMouseOver(e) {
   e.preventDefault();
-  searchInput.classList.remove(DEFAULT_CLASSNAME);
+  searchForm.classList.remove(DEFAULT_CLASSNAME);
   searchItag.classList.add(ICON_CLASS_NAME);
   if (!clicked) {
     searchForm.classList.add(FOCUS_CLASSNAME);
-    // searchForm.style.borderBottom = FOCUS_BORDER_BOTTOM;/
   }
   mouseOn = true;
 }
 function onSearchMouseOut(e) {
   e.preventDefault();
   mouseOn = false;
+  if (clicked == false) {
+    if (searchInput.value === "") {
+      searchForm.classList.add(DEFAULT_CLASSNAME);
+      searchItag.classList.remove(ICON_CLASS_NAME);
+    }
+    searchForm.classList.remove(FOCUS_CLASSNAME);
+    searchForm.classList.remove(CLICK_CLASSNAME);
+  }
 }
 
 function onSearchClick(e) {
   e.preventDefault();
   searchForm.classList.add(CLICK_CLASSNAME);
   searchForm.classList.remove(FOCUS_CLASSNAME);
-  //   searchForm.style.borderBottom = CLICK_BORDER_BOTTOM;
   clicked = true;
 }
 
@@ -44,12 +50,11 @@ function onBodyClick(e) {
   e.preventDefault();
   if (mouseOn == false) {
     if (searchInput.value === "") {
-      searchInput.classList.add(DEFAULT_CLASSNAME);
+      searchForm.classList.add(DEFAULT_CLASSNAME);
       searchItag.classList.remove(ICON_CLASS_NAME);
     }
     searchForm.classList.remove(FOCUS_CLASSNAME);
     searchForm.classList.remove(CLICK_CLASSNAME);
-    // searchForm.style.borderBottom = "";
     clicked = false;
   }
 }
