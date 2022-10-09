@@ -7,6 +7,7 @@ const bStartStop = document.querySelector("#timer i");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 let time = 0;
+let targetTime = 0;
 
 const START_CLASS_NAME = "fa-play";
 const PAUSE_CLASS_NAME = "fa-pause";
@@ -72,35 +73,67 @@ function subSec(e) {
   }
 }
 
+function drawArc(rate, color) {
+  let angle = 0;
+  if (rate <= 0.25) {
+    angle = (1.5 + rate * 2.0) * Math.PI;
+  } else {
+    angle = (-0.5 + rate * 2.0) * Math.PI;
+  }
+  console.log("angle", angle);
+  ctx.beginPath();
+  ctx.arc(105, 105, 100, 1.5 * Math.PI, angle, false);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 3;
+  ctx.stroke();
+  //ctx.closePath();
+}
+
+function drawBaseCircle() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.arc(105, 105, 100, -Math.PI, 2 * Math.PI, false);
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.closePath();
+}
+
 function onITagClick(e) {
   const curClassName = bStartStop.classList[1];
+  const timeLeftText = timeLeft.innerText;
   if (curClassName === START_CLASS_NAME && timeLeft.innerText !== "00:00") {
     // Now we need to start the timer
     bStartStop.classList.add(PAUSE_CLASS_NAME);
     bStartStop.classList.remove(START_CLASS_NAME);
+    const min = parseInt(timeLeftText.substr(0, 2));
+    const sec = parseInt(timeLeftText.substr(3, 2));
+    time = (min * 60 + sec) * 10; // in 0.1s
+    const targetTime = time;
     const timerId = setInterval(function () {
-      const timeLeftText = timeLeft.innerText;
-      const min = parseInt(timeLeftText.substr(0, 2));
-      const sec = parseInt(timeLeftText.substr(3, 2));
-      time = min * 60 + sec;
+      let rate = (targetTime - time) / targetTime;
+      drawArc(rate, "white");
       time--;
       if (bStartStop.classList[1] === START_CLASS_NAME) {
         clearInterval(timerId);
       } else if (time <= 0) {
+        // drawArc(1, "white");
         // timer ended
         clearInterval(timerId);
         bStartStop.classList.add(START_CLASS_NAME);
         bStartStop.classList.remove(PAUSE_CLASS_NAME);
         timeLeft.innerText = "00:00";
         time = 0;
+        drawBaseCircle();
       } else {
         //show timer text
-        timeLeft.innerText = `${String(parseInt(time / 60)).padStart(
-          2,
-          "0"
-        )}:${String(time % 60).padStart(2, "0")}`;
+        timeLeft.innerText = `${String(
+          parseInt(Math.ceil(time / 10) / 60)
+        ).padStart(2, "0")}:${String(
+          parseInt(Math.ceil(time / 10) % 60)
+        ).padStart(2, "0")}`;
       }
-    }, 1000);
+    }, 100);
   } else {
     // user clicked pause
     bStartStop.classList.add(START_CLASS_NAME);
@@ -114,8 +147,4 @@ bAddSec.addEventListener("click", addSec);
 bSubSec.addEventListener("click", subSec);
 bStartStop.addEventListener("click", onITagClick);
 
-// ctx.beginPath();
-// ctx.arc(100, 100, 100, -Math.PI, 2 * Math.PI, false);
-// ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
-// ctx.lineWidth = 2;
-// ctx.stroke();
+drawBaseCircle();
