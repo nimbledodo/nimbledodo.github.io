@@ -80,6 +80,20 @@ body > div:first-child {
 #search > input {
   padding-left: 1vh;
   font-size: 2vh;
+  /* width: 240px; */
+  cursor: pointer;
+}
+#search:hover {
+  cursor: pointer;
+}
+.click {
+  border-bottom: 2px solid white;
+}
+.focused {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+.default {
+  border: none;
 }
 
 #login-form > input {
@@ -140,6 +154,9 @@ i {
 }
 #weather > img {
   height: 4vh;
+}
+#weather:hover {
+  cursor: pointer;
 }
 
 .hidden {

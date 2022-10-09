@@ -16,6 +16,7 @@ function onGeoSuccess(pos) {
       city.innerText = data.name;
       weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
       weatherIcon.alt = data.weather[0].main;
+      weatherIcon.title = weatherIcon.alt;
       // weatherIcon.innerText = getWeatherIcon();
       temp.innerText = `${Math.ceil(data.main.temp)}°`;
     });

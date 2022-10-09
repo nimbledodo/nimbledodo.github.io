@@ -4,8 +4,9 @@ const searchItag = document.querySelector("#icon");
 let mouseOn = false;
 let clicked = false;
 const ICON_CLASS_NAME = "fa-google";
-const FOCUS_BORDER_BOTTOM = "2px solid rgba(255,255,255,0.5)";
-const CLICK_BORDER_BOTTOM = "2px solid white";
+const FOCUS_CLASSNAME = "focused";
+const CLICK_CLASSNAME = "click";
+const DEFAULT_CLASSNAME = "default";
 
 function onSearchSubmit(e) {
   e.preventDefault();
@@ -18,10 +19,11 @@ function onSearchSubmit(e) {
 
 function onSearchMouseOver(e) {
   e.preventDefault();
-  searchInput.classList.remove("hidden");
+  searchInput.classList.remove(DEFAULT_CLASSNAME);
   searchItag.classList.add(ICON_CLASS_NAME);
   if (!clicked) {
-    searchForm.style.borderBottom = FOCUS_BORDER_BOTTOM;
+    searchForm.classList.add(FOCUS_CLASSNAME);
+    // searchForm.style.borderBottom = FOCUS_BORDER_BOTTOM;/
   }
   mouseOn = true;
 }
@@ -32,7 +34,9 @@ function onSearchMouseOut(e) {
 
 function onSearchClick(e) {
   e.preventDefault();
-  searchForm.style.borderBottom = CLICK_BORDER_BOTTOM;
+  searchForm.classList.add(CLICK_CLASSNAME);
+  searchForm.classList.remove(FOCUS_CLASSNAME);
+  //   searchForm.style.borderBottom = CLICK_BORDER_BOTTOM;
   clicked = true;
 }
 
@@ -40,10 +44,12 @@ function onBodyClick(e) {
   e.preventDefault();
   if (mouseOn == false) {
     if (searchInput.value === "") {
-      searchInput.classList.add("hidden");
+      searchInput.classList.add(DEFAULT_CLASSNAME);
       searchItag.classList.remove(ICON_CLASS_NAME);
     }
-    searchForm.style.borderBottom = "";
+    searchForm.classList.remove(FOCUS_CLASSNAME);
+    searchForm.classList.remove(CLICK_CLASSNAME);
+    // searchForm.style.borderBottom = "";
     clicked = false;
   }
 }
