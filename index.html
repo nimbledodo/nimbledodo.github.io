@@ -15,11 +15,20 @@
         <i class="fa-brands" id="icon"></i>
       </form>
     </div>
-    <div id="timer">
-      <button id="add-min">+</button><button id="sub-min">-</button>
-      <button id="add-sec">+</button><button id="sub-sec">-</button>
-      <span id="time-left">00:00</span>
-      <i class="fa-solid fa-play"></i>
+    <div id="canvas-wrap">
+      <div id="timer">
+        <div>
+          <div class="min">
+            <button id="add-min">+</button><button id="sub-min">-</button>
+          </div>
+          <div class="sec">
+            <button id="add-sec">+</button><button id="sub-sec">-</button>
+          </div>
+        </div>
+        <span id="time-left">00:00</span>
+        <i class="fa-solid fa-play"></i>
+      </div>
+      <canvas width="200px" height="200px"></canvas>
     </div>
     <div id="main">
       <div id="clock"><span></span></div>
