@@ -74,7 +74,7 @@ function subSec(e) {
 
 function onITagClick(e) {
   const curClassName = bStartStop.classList[1];
-  if (curClassName === START_CLASS_NAME) {
+  if (curClassName === START_CLASS_NAME && timeLeft.innerText !== "00:00") {
     // Now we need to start the timer
     bStartStop.classList.add(PAUSE_CLASS_NAME);
     bStartStop.classList.remove(START_CLASS_NAME);
@@ -92,6 +92,7 @@ function onITagClick(e) {
         bStartStop.classList.add(START_CLASS_NAME);
         bStartStop.classList.remove(PAUSE_CLASS_NAME);
         timeLeft.innerText = "00:00";
+        time = 0;
       } else {
         //show timer text
         timeLeft.innerText = `${String(parseInt(time / 60)).padStart(
