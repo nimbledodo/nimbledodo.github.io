@@ -86,16 +86,14 @@ function drawArc(rate, color) {
   ctx.strokeStyle = color;
   ctx.lineWidth = 3;
   ctx.stroke();
-  //ctx.closePath();
 }
 
 function drawBaseCircle() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
   ctx.arc(105, 105, 100, -Math.PI, 2 * Math.PI, false);
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
-  ctx.lineWidth = 2;
-  ctx.stroke();
+  ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+  ctx.fill();
   ctx.closePath();
 }
 
