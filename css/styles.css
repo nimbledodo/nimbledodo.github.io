@@ -12,6 +12,36 @@ body {
   grid-template-rows: 10vh 80vh 10vh;
 }
 
+input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+input:focus {
+  color: white;
+}
+input::placeholder {
+  color: white;
+}
+
+#main {
+  grid-column: 2/3;
+  grid-row: span 3;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1em 1em 2em 1em;
+  border-radius: 1em;
+}
+
+#clock {
+  justify-content: center;
+}
+
 #clock span {
   font-size: 15vh;
   font-weight: 500;
@@ -26,21 +56,6 @@ body {
   font-size: 5vh;
   font-weight: 400;
   padding-top: 0.2em;
-}
-#main {
-  grid-column: 2/3;
-  grid-row: span 3;
-  justify-self: center;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 1em 1em 2em 1em;
-  border-radius: 2em;
-}
-#clock {
-  justify-content: center;
 }
 
 body > div:first-child {
@@ -60,19 +75,6 @@ body > div:first-child {
 #search > input {
   padding-left: 1vh;
   font-size: 2vh;
-}
-
-input {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  color: white;
-}
-input:focus {
-  color: white;
-}
-input::placeholder {
-  color: white;
 }
 
 #login-form > input {
