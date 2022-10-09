@@ -24,6 +24,11 @@ input:focus {
 input::placeholder {
   color: white;
 }
+button {
+  background-color: transparent;
+  color: white;
+  border: none;
+}
 
 #main {
   grid-column: 2/3;
@@ -91,12 +96,23 @@ body > div:first-child {
   padding-right: 1vh;
   padding-bottom: 1vh;
 }
+.done > span {
+  text-decoration: line-through;
+}
 #timer {
   grid-column: 1;
   grid-row: 2 / span 2;
   align-self: end;
-  padding-left: 1vh;
-  padding-bottom: 1vh;
+  margin-left: 1.5vh;
+  margin-bottom: 1.5vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+}
+#timer > span,
+i {
+  grid-column: span 4;
+  justify-self: center;
 }
 #weather {
   grid-column: 3;

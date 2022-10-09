@@ -2,6 +2,11 @@ const toDoForm = document.querySelector("#todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector("#todo-list");
 
+const STYLE = "fa-regular";
+const DONE = "fa-square-check";
+const DELETE = "fa-trash-can";
+const UNDONE = "fa-square";
+
 const TODOS_KEY = "toDos";
 
 let toDos = [];
@@ -19,6 +24,7 @@ function onToDoSubmit(e) {
   const newToDoObj = {
     text: toDoInput.value,
     id: Date.now(),
+    done: false,
   };
   toDoInput.value = "";
   addToDo(newToDoObj);
@@ -30,16 +36,50 @@ function saveToDos(toDos) {
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
+// Todo에서 지웠다가 다시 넣으면 순서가 바뀌기 때문에 지우지 않고 값을 변경할 방법을 찾아야 함!
+function onCheckClick(e) {
+  e.preventDefault();
+  const i = e.target;
+  const li = e.target.parentElement;
+  const index = toDos.findIndex((toDo) => toDo.id === parseInt(li.id));
+
+  if (i.classList[1] == UNDONE) {
+    // currently undone.need to change to done
+    i.classList.remove(UNDONE);
+    i.classList.add(DONE);
+    li.classList.add("done");
+    toDos[index].done = true;
+  } else {
+    // currently done.need to change to undone
+    i.classList.add(UNDONE);
+    i.classList.remove(DONE);
+    li.classList.remove("done");
+    toDos[index].done = false;
+  }
+
+  saveToDos(toDos);
+}
 function addToDo(newToDoObj) {
   const li = document.createElement("li");
   const span = document.createElement("span");
-  const button = document.createElement("button");
+  const check = document.createElement("i");
+  const del = document.createElement("i");
   span.innerText = newToDoObj.text;
-  button.innerText = "Delete";
-  button.addEventListener("click", onDeletetoDo);
+  check.classList.add(STYLE);
+  del.classList.add(STYLE);
+  del.classList.add(DELETE);
+  if (newToDoObj.done) {
+    check.classList.add(DONE);
+    li.classList.add("done");
+  } else {
+    check.classList.add(UNDONE);
+  }
+  check.addEventListener("click", onCheckClick);
+  del.addEventListener("click", onDeletetoDo);
   li.id = newToDoObj.id;
+  li.appendChild(check);
   li.appendChild(span);
-  li.appendChild(button);
+  li.appendChild(del);
   toDoList.appendChild(li);
 }
 
