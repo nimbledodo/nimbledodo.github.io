@@ -42,26 +42,44 @@ body {
 #clock {
   justify-content: center;
 }
+
+body > div:first-child {
+  display: flex;
+}
 #search {
   grid-column: 1;
   grid-row: 0;
-  padding-left: 1vh;
-  padding-top: 1vh;
+  margin-left: 1.5vh;
+  margin-top: 1.5vh;
+  height: 1.5em;
+  display: flex;
+  align-items: start;
+  justify-self: start;
+  font-size: 2vh;
 }
 #search > input {
-  background-color: rgba(0, 0, 0, 0);
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  padding-left: 1vh;
+  font-size: 2vh;
 }
-#search > input:focus {
-  background-color: rgba(0, 0, 0, 0);
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 1);
+
+input {
+  background-color: transparent;
+  border: none;
   outline: none;
+  color: white;
+}
+input:focus {
+  color: white;
+}
+input::placeholder {
+  color: white;
+}
+
+#login-form > input {
+  font-size: 5vh;
+  font-weight: 400;
+  padding-top: 0.2em;
+  border-bottom: 2px solid white;
 }
 
 #todo {
